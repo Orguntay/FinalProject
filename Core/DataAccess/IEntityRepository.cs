@@ -1,10 +1,10 @@
-﻿using Entities.Abstaract;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace DataAccess.Abstract
+namespace Core.DataAccess
 {
     // geberic constraint
     // class : referans tip
