@@ -29,29 +29,29 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ProductAdded);
         }
 
-        public List<Product> GetAll()
+        public IDataResult<List<Product>> GetAll()
         {
             // İş Kodkları
             // Yetkisi var mı?
             return _IProductDal.GetAll();
         }
 
-        public List<Product> GetAllByCategoryId(int id)
+        public IDataResult<List<Product>> GetAllByCategoryId(int id)
         {
-            return _IProductDal.GetAll(p => p.CategoryId == id);
+            return DataResult(_IProductDal.GetAll(p => p.CategoryId == id));
         }
 
-        public Product GetById(int productId)
+        public IDataResult<Product> GetById(int productId)
         {
-            return _IProductDal.Get(p => p.ProductId == productId);
+            return new DataResult(_IProductDal.Get(p => p.ProductId == productId));
         }
 
-        public List<Product> GetByUnitPrice(decimal min, decimal max)
+        public IDataResult<List<Product>> GetByUnitPrice(decimal min, decimal max)
         {
             return _IProductDal.GetAll(p => p.UnitPrice >= min && p.UnitPrice <= max);
         }
 
-        public List<ProductDetailDto> GetProductDetailsDtos()
+        public IDataResult<List<Product>> GetProductDetailsDtos()
         {
             return _IProductDal.GetProductDetails();
         }
