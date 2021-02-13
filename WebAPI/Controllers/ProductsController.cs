@@ -22,13 +22,39 @@ namespace WebAPI.Controllers
         {
             _productService = productService;
         }
-        [HttpGet]
-        public List<Product> Get()
+        [HttpGet("GetAll")]
+        public IActionResult GetAll()
         {
             // Dependency chain --
             // ​info@solidteam.net
             var result = _productService.GetAll();
-            return result.Data;
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
+
+        [HttpGet("GetById")]
+        public IActionResult GetById(int id)
+        {
+            var result = _productService.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpPost("Add")]
+        public IActionResult Add(Product product)
+        {
+            var result = _productService.Add(product);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
     }
 }
