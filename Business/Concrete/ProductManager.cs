@@ -34,10 +34,10 @@ namespace Business.Concrete
         {
             // İş Kodkları
             // Yetkisi var mı?
-            if (DateTime.Now.Hour == 22)
-            {
-                return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
-            }
+            //if (DateTime.Now.Hour == 22)
+            //{
+            //    return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
+            //}
             return new SuccessDataResult<List<Product>>(_IProductDal.GetAll(), Messages.ProductListed);
         }
 
